@@ -1,0 +1,15 @@
+local Hihge = script.Parent.PrimaryPart
+local opened = false
+
+function Door(i)
+if opened == false then
+wait()
+local tven = game:GetService("TweenService"):Create(script.Parent.PrimaryPart,TweenInfo.new(1.5,Enum.EasingStyle.Quart),{CFrame = script.Parent.PrimaryPart.CFrame * CFrame.Angles(0, math.rad(i), 0)})
+tven:Play()
+print("hi")
+tven.Completed:Wait()
+end
+end
+
+script.Parent.Handle1.ClickDetector.MouseClick:Connect(OpenDoor)
+script.Parent.Handle2.ClickDetector.MouseClick:Connect(OpenDoor)
