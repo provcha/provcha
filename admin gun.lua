@@ -7,3 +7,23 @@ function AdminGunController.new(model)
     self:init()
     return self
 end
+
+function AdminGunController:shoot1()
+
+end
+
+function AdminGunController:shoot2()
+
+end
+
+function AdminGunController:startShoot1()
+
+end
+
+function AdminGunController:startShoot2()
+
+end
+
+function AdminGunController:init()
+
+end
