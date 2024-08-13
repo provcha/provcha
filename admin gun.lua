@@ -1,5 +1,6 @@
 local AdminGunController = {}
+AdminGunController.__index = AdminGunController
 
-function AdminGunController.new()
-    print("new")
+function AdminGunController.new(model)
+    local self = setmetatable({}, AdminGunController)
 end
