@@ -1,5 +1,5 @@
 local AdminGunController = {}
 
 function AdminGunController.new()
-print("new")
+    print("new")
 end
