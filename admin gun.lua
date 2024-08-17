@@ -4,6 +4,7 @@ local uis = game:GetService("UserInputService")
 
 function AdminGunController.new(model)
     local self = setmetatable({}, AdminGunController)
+    self.plr = game.Players.LocalPlayer
     self.model = model
     self.fireRate = 999999
     self.getHit = require(game.ReplicatedStorage.getHit)
@@ -11,6 +12,7 @@ function AdminGunController.new(model)
     self.shooting2 = false
     self.perssed1 = false
     self.pressed2 = false
+    self.mobGui = script.mobGui:Clone()
     self:init()
     return self
 end
@@ -45,5 +47,16 @@ function AdminGunController:startShoot2()
 end
 
 function AdminGunController:init()
-
+   if not uis.TouchEnbled then
+      uis.InputBegan:Connect(function(inp)
+         if inp.UserInputType == Enum.UserInputType.MouseButton1 then
+            self:startShoot1()
+         end
+         if inp.UserInputType == Enum.UserInputType.MouseButton2 then
+            self:startShoot2()
+         end
+      end)
+   else
+      self.mobGui.Parent = self.plr.PlayerGui
+   end
 end
