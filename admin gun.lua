@@ -9,7 +9,7 @@ function AdminGunController.new(model)
 end
 
 function AdminGunController:shoot1()
-
+    local hit, pos, _
 end
 
 function AdminGunController:shoot2()
