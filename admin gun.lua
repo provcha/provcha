@@ -12,7 +12,6 @@ function AdminGunController.new(model)
     self.shooting2 = false
     self.perssed1 = false
     self.pressed2 = false
-    self.mobGui = script.mobGui:Clone()
     self:init()
     return self
 end
@@ -57,6 +56,10 @@ function AdminGunController:init()
          end
       end)
    else
+      self.mobGui = script.mobGui:Clone()
       self.mobGui.Parent = self.plr.PlayerGui
+      self.mobGui.Fire1Button.MouseButton1Down:Connect(function()
+        self:start
+      end)
    end
 end
