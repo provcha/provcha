@@ -1,10 +1,12 @@
 local AdminGunController = {}
 AdminGunController.__index = AdminGunController
+local uis = game:GetService("UserInputService")
 
 function AdminGunController.new(model)
     local self = setmetatable({}, AdminGunController)
     self.fireRate = 999999
     self.getHit = require(game.ReplicatedStorage.getHit)
+    self.shooting = false
     self:init()
     return self
 end
@@ -24,20 +26,13 @@ function AdminGunController:startShoot1()
        return
     end
 
-    local fireMode = self.blaster:GetAttribute(Constants.FIRE_MODE_ATTRIBUTE)
-    local rateOfFire = self.blaster:GetAttribute(Constants.RATE_OF_FIRE_ATTRIBUTE)
-
     task.spawn(function()
       self.shooting = true
-      while self.activated and self:canShoot() do
+      while uis:KeyIsPressed(Enum.UserInputType.MouseButton1) do
         self:shoot1()
-        task.wait(60 / rateOfFire)
+        task.wait(60 / self.fireRate)
       end
       self.shooting = false
-
-      if self.ammo == 0 then
-        self:reload()
-      end
     end)
 end
 
