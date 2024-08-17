@@ -29,7 +29,7 @@ function AdminGunController:startShoot1()
 
     task.spawn(function()
       self.shooting = true
-      while uis:IsMouseButtonPressed(Enum.UserInputType.Mouse button) and self.model.Parent == workspace do
+      while uis:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) and self.model.Parent == workspace do
         self:shoot1()
         task.wait(60 / self.fireRate)
       end
