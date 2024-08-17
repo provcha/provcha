@@ -7,7 +7,10 @@ function AdminGunController.new(model)
     self.model = model
     self.fireRate = 999999
     self.getHit = require(game.ReplicatedStorage.getHit)
-    self.shooting = false
+    self.shooting1 = false
+    self.shooting2 = false
+    self.perssed1 = false
+    self.pressed2 = false
     self:init()
     return self
 end
