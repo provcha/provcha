@@ -20,28 +20,17 @@ function AdminGunController:shoot2()
 end
 
 function AdminGunController:startShoot1()
-  if self.shooting then
-    return
-  end
+    if self.shooting then
+       return
+    end
 
-  local fireMode = self.blaster:GetAttribute(Constants.FIRE_MODE_ATTRIBUTE)
-  local rateOfFire = self.blaster:GetAttribute(Constants.RATE_OF_FIRE_ATTRIBUTE)
+    local fireMode = self.blaster:GetAttribute(Constants.FIRE_MODE_ATTRIBUTE)
+    local rateOfFire = self.blaster:GetAttribute(Constants.RATE_OF_FIRE_ATTRIBUTE)
 
-  if fireMode == Constants.FIRE_MODE.SEMI then
-    self.shooting = true
-    self:shoot()
-    task.delay(60 / rateOfFire, function()
-      self.shooting = false
-
-      if self.ammo == 0 then
-        self:reload()
-      end
-    end)
-  elseif fireMode == Constants.FIRE_MODE.AUTO then
-    task.spawn(function()u
+    task.spawn(function()
       self.shooting = true
       while self.activated and self:canShoot() do
-        self:shoot()
+        self:shoot1()
         task.wait(60 / rateOfFire)
       end
       self.shooting = false
@@ -50,7 +39,6 @@ function AdminGunController:startShoot1()
         self:reload()
       end
     end)
-  end
 end
 
 function AdminGunController:startShoot2()
