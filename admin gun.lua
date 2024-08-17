@@ -4,6 +4,7 @@ local uis = game:GetService("UserInputService")
 
 function AdminGunController.new(model)
     local self = setmetatable({}, AdminGunController)
+    self.model = model
     self.fireRate = 999999
     self.getHit = require(game.ReplicatedStorage.getHit)
     self.shooting = false
@@ -28,7 +29,7 @@ function AdminGunController:startShoot1()
 
     task.spawn(function()
       self.shooting = true
-      while uis:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+      while uis:IsMouseButtonPressed(Enum.UserInputType.Mouse button) and self.model.Parent == workspace do
         self:shoot1()
         task.wait(60 / self.fireRate)
       end
