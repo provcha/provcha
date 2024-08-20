@@ -78,5 +78,13 @@ function AdminGunController:init()
         self.pressed2 = true
         self:startShoot2()
       end)
+
+
+self.mobGui.Fire1Button.MouseButton1Up:Connect(function()
+        self.pressed1 = false
+      end)
+      self.mobGui.Fire2Button.MouseButton1Up:Connect(function()
+        self.pressed2 = false
+      end)
    end
 end
